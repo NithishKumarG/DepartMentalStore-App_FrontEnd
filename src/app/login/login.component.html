@@ -1,6 +1,8 @@
 <h1 mat-dialog-title>Login</h1>
+
 <form class="example-form" [formGroup]="loginForm">
     <mat-card-content>
+      <h4 style=" text-align:center;color:rgb(255, 255, 255); background-color: red; border-radius: 5px;">{{message}}</h4>
         <mat-form-field style= "padding-top: 25px;"> 
             <mat-label>Email id</mat-label>
             <input type="email" formControlName="email" matInput placeholder="Email id(ex:abc@dd.com)" required email>
@@ -9,17 +11,19 @@
           </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Enter Password" formControlName="password" type="password" required>
+        <input matInput placeholder="Enter Password" formControlName="password" [type]="hide?'password':'text'" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+          'visibility_off'}}</mat-icon>
         <mat-error *ngIf="loginForm.get('password')?.hasError('required')&&loginForm.get('password')?.touched">Password required</mat-error>
       </mat-form-field>
     </mat-card-content>
   </form>
 
 
-<p style="font-size:10px ; float: left; margin-top:25px;">Don't Have an account?Sign Up</p>
+<p style="font-size:10px ; float: left; margin-top:25px;" mat-dialog-close="true">Don't Have an account?<a routerLink="" (click)="openregisterDialog();">Register</a></p>
 <div mat-dialog-actions [align]="'end'">
   
     <button mat-stroked-button mat-dialog-close="true">Close</button>
-    <button mat-raised-button color="primary">Login</button>
+    <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="onSubmit();">Login</button>
   
 </div>

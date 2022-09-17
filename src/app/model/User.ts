@@ -1,10 +1,12 @@
 export class User{
-    firstname:String;
-    lastname:String;
+    firstName:String;
+    lastName:String;
     email:string;
+    dob:Date;
     contactno:string;
     password:string;
-    confirmpassword:string;
+    phone:number|null;
+    isloggerIn=false;
     constructor(){
 
     }

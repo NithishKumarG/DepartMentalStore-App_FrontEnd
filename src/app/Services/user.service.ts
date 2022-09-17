@@ -6,9 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
- private url="localhost:8080/user/"
+ private url="http://localhost:8080/user";
+  isloggedIn=false;
+  getIsLoggedIn(){
+    return this.isloggedIn;
+  }
     public constructor(private http:HttpClient) { }
   userlogin(user:User):Observable<Object>{
-      return this.http.post<Object>(this.url, user);
+      return this.http.post<Object>(`${this.url}/signIn`, user);
+  }
+
+  userRegister(user:User){
+    console.log(user);
+    return this.http.post(`${this.url}/signUp`,user)
   }
 }

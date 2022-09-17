@@ -18,12 +18,16 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegisteruserComponent } from './registeruser/registeruser.component';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,    
+    LoginComponent,
+    RegisteruserComponent,    
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { ReactiveFormsModule } from '@angular/forms';
    MatInputModule,
    MatCardModule,
    ReactiveFormsModule,
-   HttpClientModule
+   HttpClientModule,
+   MatDatepickerModule,
+   MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

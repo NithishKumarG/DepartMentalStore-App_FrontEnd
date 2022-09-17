@@ -1,0 +1,12 @@
+.mat-dialog-title
+{
+    text-align:center;
+    background-color: rgb(11, 56, 138);
+     color:white; border-radius: 5px;
+     height: 50%;
+}
+.mat-form-field{
+    width:250px !important;
+    padding-left: 40px;
+ }
+ 

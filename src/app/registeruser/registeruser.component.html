@@ -1,0 +1,62 @@
+<h1 mat-dialog-title>Register</h1>
+<form [formGroup]="registerForm">
+<mat-card-content>
+    <mat-form-field class="example-full-width"> <!-- first Name-->
+      <input matInput placeholder="First name" formControlName="firstname" #firstname required minlength="3">
+      <mat-error *ngIf="registerForm.get('firstname')?.hasError('required')&&registerForm.get('firstname')?.touched">required</mat-error>
+      <mat-error *ngIf="(registerForm.get('firstname')?.hasError('minlength')&&registerForm.get('firstname')?.dirty)">first Name Should have minimum 3 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width"> <!-- Last Name-->
+      <input matInput placeholder="Last name" formControlName="lastname" #lastname required>
+      <mat-error *ngIf="registerForm.get('lastname')?.hasError('required')&&registerForm.get('lastname')?.touched">required</mat-error>
+    </mat-form-field>
+<mat-form-field class="dob">   
+      <mat-label>DOB</mat-label>
+      <input matInput [matDatepicker]="date" formControlName="dob" #dob required>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-error *ngIf="registerForm.get('dob')?.hasError('required')&&registerForm.get('dob')?.touched">required</mat-error>
+      <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+      <mat-datepicker #date></mat-datepicker>
+  </mat-form-field>
+    
+  <mat-form-field> 
+    <mat-label>Email id</mat-label>
+    <input type="email" formControlName="email" matInput placeholder="Email id(ex:abc@dd.com)" required email>
+    <mat-error *ngIf="registerForm.get('email')?.hasError('required')&&registerForm.get('email')?.touched">Email required</mat-error>
+    <mat-error *ngIf="registerForm.get('email')?.hasError('email')&&registerForm.get('email')?.dirty">Enter a valid Email</mat-error>
+  </mat-form-field>
+  <mat-form-field> 
+    <mat-label>Contact No</mat-label>
+    <input type="text" formControlName="phone" matInput placeholder="Mobile no" required pattern="[6789][0-9]{9}" >
+    <mat-error *ngIf="registerForm.get('phone')?.hasError('required')&&registerForm.get('phone')?.touched">required</mat-error>
+    <mat-error *ngIf="registerForm.get('phone')?.hasError('pattern')&&registerForm.get('phone')?.dirty">Enter valid contact number</mat-error>
+  </mat-form-field>
+
+
+
+   <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Enter Password" formControlName="password" [type]="hide?'password':'text'" required #password minlength="8">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+        'visibility_off'}}</mat-icon>
+    <mat-error *ngIf="registerForm.get('password')?.hasError('required')&&registerForm.get('password')?.touched">required</mat-error>
+    <mat-error *ngIf="(registerForm.get('password')?.hasError('minlength')&&registerForm.get('password')?.dirty)">password Shouldc contain minimum 8 characters</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Confirm Password</mat-label>
+    <input matInput placeholder="Confirm Password" formControlName="confirmpassword" [type]="hide?'password':'text'" required  pattern="{{password.value}}">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 
+        'visibility_off'}}</mat-icon>
+    <mat-error *ngIf="registerForm.get('confirmpassword')?.hasError('required')&&registerForm.get('confirmpassword')?.touched">required</mat-error>
+    <mat-error *ngIf="registerForm.get('confirmpassword')?.hasError('pattern')&&registerForm.get('confirmpassword')?.touched">password do not match</mat-error>
+
+  </mat-form-field>
+</mat-card-content>
+</form>
+
+<p style="font-size:10px ; float: left; margin-top:25px;" mat-dialog-close="true">Don't Have an account?<a routerLink="" (click)="openloginDialog();">Login</a></p>
+<div mat-dialog-actions [align]="'end'">
+  
+    <button mat-stroked-button mat-dialog-close="true">Close</button>
+    <button type="submit" [disabled]="registerForm.invalid" mat-raised-button color="primary" (click)="RegisterUser();">Register</button>
+</div>

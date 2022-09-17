@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'DepartMentalStore-App_FrontEnd';
   width="width:50px;";
   isMenuOpen=true;
+  isloggedIn=LoginComponent.isloggedIn;
   public constructor(private dialog:MatDialog){
     
   }
@@ -18,6 +19,9 @@ export class AppComponent {
     this.dialog.open(LoginComponent,{
      width:"30%",
     })
+    if(LoginComponent.isloggedIn==true){
+      this.dialog.closeAll();
+    }
   }
   onToolbarMenuToggle() {
     this.isMenuOpen = !this.isMenuOpen;
