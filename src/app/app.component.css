@@ -1,0 +1,60 @@
+
+.example-spacer {
+    flex: 1 1;
+}
+  /* .mat-list-item a{
+    color: #000000 !important;
+    font-size: rem;
+    height: 50px !important;
+    margin-top: 0;
+    margin-bottom: 4px;
+    justify-content: center;
+  } */
+ /* .mat-list-item-content{
+    align-items: center;
+    padding-left: 0;
+ } */
+  mat-nav-list{
+    padding-top: 0;
+  }
+  .mat-icon{
+    padding-right: 40px;
+    padding-left: 0;
+  }
+ .material-icons {
+    font-size: 30px;
+    padding-bottom:5px ;
+  }
+  .mat-toolbar-row, .mat-toolbar-single-row {
+    height: 50px;
+    width: 100%;
+}
+.example-icon{
+  padding-left: 5px;
+}
+.navList a:hover{
+  background-color: cornflowerblue;
+  color: white;
+}
+.navList a:active .mat-icon{
+  color: white;
+}
+
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  display: none;
+}
+:host /deep/ .mat-list-item-content {
+  padding: 10px !important;
+}
+.mat-nav-list .mat-list-item:focus,
+.mat-action-list .mat-list-item:focus,
+.mat-list-option:focus
+{
+  background-color: cornflowerblue;
+  color: white;
+}
+.active {
+  background-color: cornflowerblue;
+  color: white;
+  font-weight: bold!important;
+}
