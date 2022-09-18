@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 
 @Component({
@@ -8,11 +9,13 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+[x: string]: any;
   title = 'DepartMentalStore-App_FrontEnd';
   width="width:50px;";
   isMenuOpen=true;
   isloggedIn=LoginComponent.isloggedIn;
-  public constructor(private dialog:MatDialog){
+  // isloggedIn=true;
+  public constructor(private dialog:MatDialog,){
     
   }
   openloginDialog(){
@@ -32,6 +35,19 @@ export class AppComponent {
       this.width = "width:200px;transition: width 0.5s;"
     }
   }
+  isloggedin(){
+    return LoginComponent.isloggedIn;
+  }
+  logOut(){
+    LoginComponent.isloggedIn=false;
+    this.isloggedIn=false;
+    
+  }
+  // @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
+
+  // closemenu() {
+  //   this.trigger.closeMenu(); 
+  // }
 }
 
 

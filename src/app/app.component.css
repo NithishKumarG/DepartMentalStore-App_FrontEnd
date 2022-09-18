@@ -20,7 +20,10 @@
   .mat-icon{
     padding-right: 40px;
     padding-left: 0;
+    height: 30px;
+    border: none !important;
   }
+  
  .material-icons {
     font-size: 30px;
     padding-bottom:5px ;
@@ -57,4 +60,23 @@
   background-color: cornflowerblue;
   color: white;
   font-weight: bold!important;
+}
+/* ::ng-deep .mat-menu-panel {
+  
+  width: 80%!important;
+}
+::ng-deep .mat-menu-item {
+  padding: 10px 2px 0px 2px !important;
+  width: 60%!important;
+} */
+.nomenu{
+  min-width: none !important;
+  display: none !important;
+}
+.mat-icon-button ::ng-deep .mat-button-focus-overlay {
+  display: none;
+  border: none;
+  margin: 0;
+  box-shadow: none;
+  background-color: transparent;
 }

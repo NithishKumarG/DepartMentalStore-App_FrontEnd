@@ -21,13 +21,22 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisteruserComponent } from './registeruser/registeruser.component';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
 
+import { ProductListComponent } from './product-list/product-list.component';
+import { CartDetailsComponent } from './cart-details/cart-details.component';
+import { ViewOrdersHistoryComponent } from './view-orders-history/view-orders-history.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisteruserComponent,    
+    RegisteruserComponent,
+    ProductListComponent,
+    CartDetailsComponent,
+    ViewOrdersHistoryComponent,
+       
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,9 @@ import { MatNativeDateModule } from '@angular/material/core';
    ReactiveFormsModule,
    HttpClientModule,
    MatDatepickerModule,
-   MatNativeDateModule
+   MatNativeDateModule,
+   MatMenuModule,
+   MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

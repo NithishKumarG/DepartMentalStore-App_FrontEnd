@@ -2,29 +2,39 @@
 
   <!-- <mat-toolbar style="background-color:black; color:white"> -->
     <mat-toolbar color="primary">
-    <button (click)="onToolbarMenuToggle();" mat-icon-button class="example-icon" aria-label="Menu icon">
-      <mat-icon style="color: white;">menu</mat-icon>
+    <button  style="outline: none;" mat-icon-button class="example-icon" (click)="onToolbarMenuToggle();" aria-label="">
+      <mat-icon style="color: white; ">menu</mat-icon>
     </button>
     <span><i>Stop n Shop</i></span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example" aria-label="Example icon-button with menu icon">
-      <mat-icon style="padding:7px 7px 7px 0">account_circle</mat-icon>
+    <div *ngIf="isloggedin();">
+    <!-- <div *ngIf="isloggedIn==true"> -->
+    <button style="outline: none;"mat-icon-button class="example-icon" aria-label="" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="isloggedin()? menu:nomenu">
+      <mat-icon >account_circle</mat-icon>
     </button>
-    <div *ngIf="isloggedIn">
-    <button mat-button style="background: white;" color="primary" (click)="openloginDialog();">SignIn</button>
+    <mat-menu #nomenu="matMenu" class="nomenu"></mat-menu>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item style="margin:0;padding-left: 20px; text-align: center;outline: none;">Profile</button>
+      <button mat-menu-item style="padding-left: 10px; text-align: right;" (click)="logOut();"(click)="menuTrigger.closeMenu();" >Logout<mat-icon style="padding-right: 0px;margin: 0;">exit_to_app</mat-icon></button>
+    </mat-menu>
+  </div>
+    <div *ngIf="isloggedin()==false">
+    <button  mat-button style="background: white;outline: none;" color="primary" (click)="openloginDialog();">SignIn</button>
   </div>
    
     
   </mat-toolbar>
-      <mat-sidenav-container style="height:92vh;">
+      <mat-sidenav-container  style="height:92vh; overflow: hidden;">
         <mat-sidenav #sidenav mode="push" opened="true">
+          <div style="overflow: hidden;">
           <mat-nav-list class="navList" [style]="width">
             <a mat-list-item routerLink="home" (click)="onToolbarMenuToggle();" routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
-            <a mat-list-item routerLink="side"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_basket</mat-icon>Products</a>
-            <a mat-list-item routerLink="/shop"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_bag</mat-icon>My Orders</a>
-            <a mat-list-item routerLink="/cart"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_cart </mat-icon>My Cart</a>
-            <a mat-list-item routerLink="/history" (click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>room</mat-icon>Track Order</a>
+            <a mat-list-item routerLink="products"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_basket</mat-icon>Products</a>
+            <a mat-list-item routerLink="orderhistory"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_bag</mat-icon>My Orders</a>
+            <a mat-list-item routerLink="cart"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_cart </mat-icon>My Cart</a>
+            <a mat-list-item routerLink="/track" (click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>room</mat-icon>Track Order</a>
           </mat-nav-list>
+        </div>
         </mat-sidenav>
         <router-outlet></router-outlet>
   </mat-sidenav-container>

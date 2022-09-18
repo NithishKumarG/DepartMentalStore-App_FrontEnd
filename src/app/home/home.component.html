@@ -1,0 +1,91 @@
+<form #searchForm="ngForm">
+<mat-form-field class="example-full-width" appearance="fill"> 
+    <input matInput type="search" placeholder="Tell us What you're looking for...?" name="searchtext" [(ngModel)]="search">
+  </mat-form-field>
+  <button mat-icon-button class="example-icon" style="background-color: blue;padding-top:0px; border-radius: 2px;" (click)="searchItem();">
+    <mat-icon style="color: rgb(255, 255, 255); padding-left: 2px; padding-top: 5px; margin:5px;font-size: 30px; display:flex;line-height: 12px;">search</mat-icon>
+  </button>
+</form>
+  <div class="welcome-text"><h1 class="text"><i>Welcome..!</i></h1></div>
+
+  <div class="welcome-div">
+<img src="../../assets/mike-petrucci-c9FQyqIECds-unsplash.jpg" alt="" width="100%" height="100%" style="padding: 20px;"></div>
+
+
+
+<div class="category" ><h1>Products category:</h1></div>
+<div class="category-outerbox">
+<div class="category-div">
+  <div class="category-display" *ngFor="let category of categories">
+    <button style="outline: none;" mat-flat-button (click)="byCategory(category);">
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>{{category.name}}</mat-card-title>
+      <mat-card-subtitle><img style="height: 70px; margin-top: 0;" mat-card-sm-image [src]="category.src"></mat-card-subtitle>
+    </mat-card-title-group>
+    <!-- <mat-card-footer>
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </mat-card-footer> -->
+  </mat-card>
+</button>
+</div>
+  <!-- <mat-card class="example-card" >
+    <mat-card-title-group>
+      <mat-card-title>Elecronics<br>&Appliances</mat-card-title>
+      <mat-card-subtitle><img style="height: 70px; margin-top: 0;" mat-card-sm-image src="../../assets/electronics.jpeg"></mat-card-subtitle>
+    </mat-card-title-group>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Fashion</mat-card-title>
+      <mat-card-subtitle><img mat-card-sm-image src="../../assets/fashion.jpg" ></mat-card-subtitle>
+      
+    </mat-card-title-group>
+  </mat-card><mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Mobiles</mat-card-title>
+      <mat-card-subtitle> <img mat-card-sm-image src="../../assets/Mobiles.jpg" ></mat-card-subtitle>
+     
+    </mat-card-title-group>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Beauty</mat-card-title>
+      <mat-card-subtitle> <img mat-card-sm-image src="../../assets/amy-shamblen-xwM61TPMlYk-unsplash.jpg" ></mat-card-subtitle>
+     
+    </mat-card-title-group>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Home <br>Appliances</mat-card-title>
+      <mat-card-subtitle><img mat-card-sm-image src="../../assets/appliances.jpg" ></mat-card-subtitle>
+      
+    </mat-card-title-group>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Groceries</mat-card-title>
+      <mat-card-subtitle><img mat-card-sm-image src="../../assets/download.jpg" ></mat-card-subtitle>
+      
+    </mat-card-title-group>
+  </mat-card>
+  <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Laptops &<br>accessries</mat-card-title>
+      <mat-card-subtitle><img style="height: 70px; margin-top: 0;" mat-card-sm-image src="../../assets/laptops.jpg"  ></mat-card-subtitle>
+      
+    </mat-card-title-group>
+  </mat-card> -->
+  <!-- <mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title>Health</mat-card-title>
+      <mat-card-subtitle>Small</mat-card-subtitle>
+      <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+    </mat-card-title-group>
+    
+    <mat-card-content>
+
+    </mat-card-content>
+  </mat-card> -->
+</div>
+</div>
