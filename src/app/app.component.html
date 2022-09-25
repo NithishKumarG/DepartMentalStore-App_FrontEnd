@@ -7,7 +7,7 @@
     </button>
     <span><i>Stop n Shop</i></span>
     <span class="example-spacer"></span>
-    <div *ngIf="isloggedin();">
+    <div *ngIf="isloggedin()==true">
     <!-- <div *ngIf="isloggedIn==true"> -->
     <button style="outline: none;"mat-icon-button class="example-icon" aria-label="" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="isloggedin()? menu:nomenu">
       <mat-icon >account_circle</mat-icon>
@@ -18,7 +18,7 @@
       <button mat-menu-item style="padding-left: 10px; text-align: right;" (click)="logOut();"(click)="menuTrigger.closeMenu();" >Logout<mat-icon style="padding-right: 0px;margin: 0;">exit_to_app</mat-icon></button>
     </mat-menu>
   </div>
-    <div *ngIf="isloggedin()==false">
+    <div *ngIf="!isloggedin()">
     <button  mat-button style="background: white;outline: none;" color="primary" (click)="openloginDialog();">SignIn</button>
   </div>
    
@@ -30,9 +30,11 @@
           <mat-nav-list class="navList" [style]="width">
             <a mat-list-item routerLink="home" (click)="onToolbarMenuToggle();" routerLinkActive="active"><mat-icon>home</mat-icon>Home</a>
             <a mat-list-item routerLink="products"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_basket</mat-icon>Products</a>
+            <div *ngIf="isloggedin()==true" class="loginAutherized">
             <a mat-list-item routerLink="orderhistory"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_bag</mat-icon>My Orders</a>
             <a mat-list-item routerLink="cart"(click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>shopping_cart </mat-icon>My Cart</a>
             <a mat-list-item routerLink="/track" (click)="onToolbarMenuToggle();"routerLinkActive="active"><mat-icon>room</mat-icon>Track Order</a>
+          </div>
           </mat-nav-list>
         </div>
         </mat-sidenav>

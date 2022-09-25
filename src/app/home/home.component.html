@@ -17,12 +17,19 @@
 <div class="category-outerbox">
 <div class="category-div">
   <div class="category-display" *ngFor="let category of categories">
-    <button style="outline: none;" mat-flat-button (click)="byCategory(category);">
+    <button style="outline: none;" mat-flat-button [matMenuTriggerFor]="menu">
   <mat-card class="example-card">
     <mat-card-title-group>
-      <mat-card-title>{{category.name}}</mat-card-title>
-      <mat-card-subtitle><img style="height: 70px; margin-top: 0;" mat-card-sm-image [src]="category.src"></mat-card-subtitle>
+      <mat-card-title>{{category.categoryname}}</mat-card-title>
+      <mat-card-subtitle><img style="height: 70px; margin-top: 0;" mat-card-sm-image [src]="category.src">
+        <mat-menu #menu="matMenu" yPosition="below">
+          <div class="category-display" *ngFor="let subcategory of category.subcateegoryname">
+          <button mat-menu-item style="margin:0;padding-left: 20px; text-align: center;outline: none; width: 150px;" (click)="byCategory(category.categoryname,subcategory.name);">{{subcategory.name}}</button>
+        </div>
+        </mat-menu>
+      </mat-card-subtitle>
     </mat-card-title-group>
+ 
     <!-- <mat-card-footer>
       <mat-progress-bar mode="indeterminate"></mat-progress-bar>
     </mat-card-footer> -->

@@ -80,3 +80,6 @@
   box-shadow: none;
   background-color: transparent;
 }
+html{
+scroll-behavior: smooth;
+}

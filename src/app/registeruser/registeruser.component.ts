@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AppComponent } from '../app.component';
 import { LoginComponent } from '../login/login.component';
 import { User } from '../model/User';
-import { UserService } from '../Services/user.service';
+import { UserLoginService } from '../Services/userlogin.service';
 @Component({
   selector: 'app-registeruser',
   templateUrl: './registeruser.component.html',
@@ -12,7 +12,7 @@ import { UserService } from '../Services/user.service';
 })
 export class RegisteruserComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private userservice:UserService,private dialog:MatDialog) { }
+  constructor(private fb:FormBuilder, private userservice:UserLoginService,private dialog:MatDialog) { }
   registerForm=this.fb.group({
       firstname : [null,[Validators.required,Validators.minLength(3)]],
       lastname : [null,[Validators.required,Validators.minLength(1)]],
@@ -23,12 +23,13 @@ export class RegisteruserComponent implements OnInit {
       confirmpassword :[null,Validators.required]
     });  
     hide=true;
-    isLoggedIn=LoginComponent.isloggedIn;
-  openloginDialog(){
+    isLoggedIn=localStorage.getItem('userloggedIn');
+    userdetails:any;
+    openloginDialog(){
     this.dialog.open(LoginComponent,{
      width:"30%",
     })
-    if(LoginComponent.isloggedIn==true){
+    if(localStorage.getItem('userloggedIn')=="true"){
       this.dialog.closeAll();
     }
 }
@@ -46,9 +47,20 @@ RegisterUser() {
   _user.password=this.registerForm.get('password')?.value!;
   console.log(_user);
   this.userservice.userRegister(_user).subscribe(
-    data=>{LoginComponent.isloggedIn=true
-    this.dialog.closeAll();},
-    error=>LoginComponent.isloggedIn=false)
+    data=>{
+      this.userdetails=data['content']!;
+      console.log(this.userdetails.email);
+        this.userdetails.isloggedIn=true;
+        localStorage.setItem('userId',this.userdetails.id);
+        localStorage.setItem('userloggedIn',this.userdetails.isloggedIn);
+        console.log(localStorage.getItem('userId'));
+      // LoginComponent.isloggedIn=true
+      this.dialog.closeAll();}
+      ,
+    error=>{
+      localStorage.setItem('userloggedIn',"false")
+          alert("registeration failed")}
+          )
 }
   ngOnInit(): void {
   }

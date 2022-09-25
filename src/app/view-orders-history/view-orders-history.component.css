@@ -1,0 +1,111 @@
+mat-grid-tile {
+    background: lightblue;
+    left: 2cm;
+    border-radius: 1cm;
+    border-width: 1cm;
+    border: 2px solid black;
+    height: 1cm;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+mat-grid-list{
+    left: 3cm;
+    top:2cm;
+    width: 30cm;
+    right: 1.5cm;
+    border-color: black;
+    justify-content:center;
+    align-items:stretch;
+    height: 10cm;
+    position: relative;
+}
+img{
+    
+  max-height:6cm;
+  max-width: 6cm;
+  padding-left: 1cm;  
+  padding-top: .1cm;
+  float: left;
+  margin-right: 8px;
+  
+
+
+
+}
+h4{
+    text-align: center;
+    top: auto;
+    font-weight: 100;
+    font-style: italic;
+}
+.div1{
+    width: 100%!important;
+}
+.proname{
+    font-size: 25px;
+    font-weight: 700;
+    color:black solid;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-family:  'Lucida Sans', 'Arial', 'sans-serif';
+    
+}
+p{
+  padding-top: .1cm;
+  padding-left: 4cm;
+  padding-right: 4cm;
+  font-weight: 300px;
+  font: optional;
+}
+button.pricebutton{
+  width: 180px;
+  height: 1.6cm;
+  color: black;
+  background-color: greenyellow;
+  border-radius: 1cm;
+  display: table-cell;
+  font-size: larger;
+  font-weight: 200px;
+  margin-right: 1cm;
+
+
+
+}
+div.price{
+  bottom:auto;
+  
+}
+h5{
+  font-size: medium;
+}
+h1{
+    margin: auto;
+  }
+  div.bill{
+    position: absolute;
+    bottom: .5cm;
+
+
+
+ }
+  .btn{
+background-color: DodgerBlue;
+  border: black;
+  color: black;
+  /*padding: 12px 30px;*/
+  cursor: pointer;
+  font-size: 12px;
+  width: 2.8cm;
+  height: .6cm;
+  margin: auto;
+  position:relative;
+  border-radius: 1cm;
+  margin-bottom: .0001cm;
+}
+.btn:hover {
+  background-color: RoyalBlue;
+}
+a{
+  margin-bottom: 1cm;
+  position: relative;
+  display:inline-block
+}

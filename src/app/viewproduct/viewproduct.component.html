@@ -1,0 +1,22 @@
+<div class="div1">
+    <img [src]="product.image">
+    <h3 class="proname">{{product.name}}</h3>
+    <h5>
+     {{product.description}}
+    </h5>
+  </div>
+  <div class="price">
+    <br>
+    <button mat-raised-button class="pricebutton"><h1>{{product.cost}}&#8377;</h1>
+    </button>
+    </div>
+  <div class="bill" style="float: right;">
+    <button class="deletebutton">
+      <button mat-stroked-button mat-dialog-close="true">Close</button>
+    </button>
+    <button mat-raised-button class="btn">
+      Proceed with the payment &#x21EB;
+    </button>
+    &nbsp;
+    
+  </div>

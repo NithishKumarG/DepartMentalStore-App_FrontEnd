@@ -1,0 +1,146 @@
+.mat-grid-tile {
+    /*background: transparent;*/
+    background-image: linear-gradient(to right, lightblue , white);
+    left: 2cm;
+    border-radius: 1cm;
+    border-width: 1cm;
+    border: 2px solid transparent;
+    height: 1cm;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+mat-grid-list{
+    left: 3cm;
+    top:2cm;
+    width: 30cm;
+    right: 1.5cm;
+    border-color: black;
+    justify-content:center;
+    align-items:stretch;
+    height: 10cm;
+    position: relative;
+}
+
+img{
+  max-height:6cm;
+  max-width: 6cm;
+  padding-left: 1cm;  
+  padding-top: .1cm;
+  float: left;
+  margin-right: 8px;
+}
+
+h4{
+    text-align: center;
+    top: auto;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.proname{
+    font-size: 25px;
+    font-weight: 700;
+    color:black solid;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-family:  'Lucida Sans', 'Arial', 'sans-serif';
+  }
+
+  p{
+    padding-top: .1cm;
+    padding-left: 4cm;
+    padding-right: 4cm;
+    font-weight: 300px;
+    font: optional;
+  }
+
+button.pricebutton{
+  width: 180px;
+  height: 1.6cm;
+  color: black;
+  background-color: greenyellow;
+  border-radius: 1cm;
+  display: table-cell;
+  font-size: larger;
+  font-weight: 200px;
+  margin-right: 1cm;
+  bottom: auto;
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+}
+
+div.price{
+  margin-right: .5cm;
+  bottom: 3cm;
+}
+
+
+
+h5{
+  font-size: medium;
+  margin-left: 1cm;
+}
+
+h3{
+  margin: auto;
+  margin-left: 1cm;
+}
+
+div.bill{
+  position: absolute;
+  bottom: .5cm;
+}
+.btn{
+    background-color: orange;
+    border: black;
+    color: black;
+      /*padding: 12px 30px;*/
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 500px;
+      width: 7cm;
+      height: .9cm;
+      margin: auto;
+      border-radius: 1cm;
+      margin-bottom: .0001cm;
+      }
+    
+      .btn:hover {
+        background-color: orangered;
+      }
+    
+      a{
+        margin-bottom: 1cm;
+        position: relative;
+        display:inline-block
+      }
+    
+      .pricebutton:hover
+      { background-color: darkgreen; }
+    
+      img.swetter{
+        max-width: 100%;
+        height: auto;
+      }
+    
+      .imagediv{
+        top: 1cm;
+        position:absolute;
+      }
+      .swetterimg{
+        top: 1cm;
+      }
+    
+      .deletebutton{
+        background-color: orange;
+        width: 1.3cm;
+        height: 1.2cm;
+        margin-left: 3cm;
+        border-radius: 1cm;
+      }
+      .deletebutton:hover{
+        background-color: orangered;
+      }
+
+    

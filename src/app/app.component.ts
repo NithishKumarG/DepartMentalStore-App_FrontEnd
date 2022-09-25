@@ -13,8 +13,7 @@ export class AppComponent {
   title = 'DepartMentalStore-App_FrontEnd';
   width="width:50px;";
   isMenuOpen=true;
-  isloggedIn=LoginComponent.isloggedIn;
-  // isloggedIn=true;
+  isloggedIn:string=localStorage.getItem('userloggedIn')!;
   public constructor(private dialog:MatDialog,){
     
   }
@@ -22,7 +21,7 @@ export class AppComponent {
     this.dialog.open(LoginComponent,{
      width:"30%",
     })
-    if(LoginComponent.isloggedIn==true){
+    if(this.isloggedIn=="false"||null){
       this.dialog.closeAll();
     }
   }
@@ -35,19 +34,16 @@ export class AppComponent {
       this.width = "width:200px;transition: width 0.5s;"
     }
   }
+  
   isloggedin(){
-    return LoginComponent.isloggedIn;
+    if(localStorage.getItem('userloggedIn')=="true")
+    return true;
+    return false;
   }
   logOut(){
-    LoginComponent.isloggedIn=false;
-    this.isloggedIn=false;
-    
+   localStorage.removeItem('userloggedIn');
+   localStorage.clear();
   }
-  // @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
-
-  // closemenu() {
-  //   this.trigger.closeMenu(); 
-  // }
 }
 
 

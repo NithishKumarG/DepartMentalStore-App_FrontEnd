@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { Productcategory } from '../model/Productcategory';
+import { productsubcategory } from '../model/productsubcategory';
+import { ProductCategorylistService } from '../Services/product-categorylist.service';
 
 @Component({
   selector: 'app-home',
@@ -8,25 +11,18 @@ import { Route, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   search:String;
-  categories = [
-    {"id": 1, "name": "Electronics", "src":"../../assets/electronics.jpeg"},
-    {"id": 2, "name": "Fashion","src":"../../assets/fashion.jpg"},
-    {"id": 3, "name": "Mobiles","src":"../../assets/Mobiles.jpg"},
-    {"id": 4, "name": "Beauty","src":"../../assets/amy-shamblen-xwM61TPMlYk-unsplash.jpg"},
-    {"id": 5, "name": "Home Appliances","src":"../../assets/appliances.jpg"},
-    {"id":6, "name": "Groceries","src":"../../assets/download.jpg"},
-    {"id":7, "name":"Laptops","src":"../../assets/laptops.jpg"}
-  ]
-  constructor(private router:Router) { }
+ 
+  constructor(private router:Router,private categoryList: ProductCategorylistService) { }
 
   ngOnInit(): void {
   }
+  categories:Productcategory[]=this.categoryList.getcategories();
   searchItem(){
     if(this.search.length==0||this.search.length<=2)
       return;
       this.router.navigate(['/products',this.search]);
   }
-byCategory(category:any){
-  this.router.navigate(['/products', category.name]);
+byCategory(category:String,subcategory:String){
+  this.router.navigate(['/products', category,subcategory]);
 }
 }

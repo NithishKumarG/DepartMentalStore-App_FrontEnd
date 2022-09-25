@@ -1,4 +1,5 @@
 export class User{
+    id:number;
     firstName:String;
     lastName:String;
     email:string;
@@ -8,7 +9,6 @@ export class User{
     phone:number|null;
     isloggerIn=false;
     constructor(){
-
     }
     
 }

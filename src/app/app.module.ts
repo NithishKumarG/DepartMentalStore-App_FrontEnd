@@ -22,11 +22,12 @@ import { RegisteruserComponent } from './registeruser/registeruser.component';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import { ProductListComponent } from './product-list/product-list.component';
 import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { ViewOrdersHistoryComponent } from './view-orders-history/view-orders-history.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ViewproductComponent } from './viewproduct/viewproduct.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ProductListComponent,
     CartDetailsComponent,
     ViewOrdersHistoryComponent,
+    ViewproductComponent,
        
   ],
   imports: [
@@ -58,7 +60,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
    MatDatepickerModule,
    MatNativeDateModule,
    MatMenuModule,
-   MatProgressBarModule
+   MatProgressBarModule,
+   MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
