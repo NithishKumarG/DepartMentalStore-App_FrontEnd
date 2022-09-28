@@ -92,10 +92,7 @@ position: absolute;
 bottom: .5cm;
 }
 .btn{
-  background-color: orange;
-    border: black;
-    color: black;
-    /*padding: 12px 30px;*/
+    /* padding: 12px 30px;*/
     cursor: pointer;
     font-size: 15px;
     font-weight: 500px;

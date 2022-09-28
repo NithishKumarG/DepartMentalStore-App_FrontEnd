@@ -10,13 +10,18 @@
     <button mat-raised-button class="pricebutton"><h1>{{product.cost}}&#8377;</h1>
     </button>
     </div>
+    <div>
+      Quantity:
+      <button mat-icon-button  [disabled]="product.value==1"  color="primary" type="button" (click)="removeitem(product);">-</button>
+      <input type="text" [disabled]="true" #value [value]="product.value" style="width: 40px;">
+      <button mat-icon-button type="button" [disabled]="product.value>=product.stock" color="primary" (click)="additem(product)">+</button>
+    </div>
   <div class="bill" style="float: right;">
     <button class="deletebutton">
       <button mat-stroked-button mat-dialog-close="true">Close</button>
     </button>
-    <button mat-raised-button class="btn">
-      Proceed with the payment &#x21EB;
-    </button>
+    <button mat-raised-button color="primary" class="btn" (click)="additemtocart(product)" style="margin-left:5px;" *ngIf="product.stock>0||product.stock>product.value">Add to cart</button>
+  
     &nbsp;
     
   </div>

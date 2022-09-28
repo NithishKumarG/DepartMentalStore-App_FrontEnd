@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from '../model/Order';
+import { OrdersService } from '../Services/orders.service';
 
 @Component({
   selector: 'app-view-orders-history',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewOrdersHistoryComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private orderservice:OrdersService ) { }
+orderList:Order[];
   ngOnInit(): void {
+    this.getAllOrders();
   }
-
+getAllOrders()
+{
+  let orderdettails:any;
+  let userID=Number(localStorage.getItem('userId'));
+this.orderservice.getAllOrderDetails(userID).subscribe(data=>{
+  console.log(data);
+  orderdettails=data;
+  if(orderdettails['status']=="OK"){
+    this.orderList=orderdettails['content'];
+  }
+},
+error=>console.log("No Orders"));
+}
 }

@@ -1,8 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { LoginComponent } from '../login/login.component';
+import { Cart } from '../model/Cart';
 import { Product } from '../model/Product';
+import { RegisteruserComponent } from '../registeruser/registeruser.component';
+import { CartService } from '../Services/cart.service';
 import { ProductlistService } from '../Services/productlist.service';
 import { ViewproductComponent } from '../viewproduct/viewproduct.component';
 
@@ -14,20 +19,12 @@ import { ViewproductComponent } from '../viewproduct/viewproduct.component';
 export class ProductListComponent implements OnInit {
   //variables
   products:Product[];
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg"),
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg"),
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg"),
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg"),
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg"),
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg"),
-  //   new Product(1,"Realme",5000,25,"This is just a demo phone if you want it buy it from us","../../assets/appliances.jpg")
-  // ];
   subcategory:string|null=this.route.snapshot.paramMap.get('subcategory');
   searchitem:string|null=this.route.snapshot.paramMap.get('searchiteam');
   subscription: Subscription;
   OOfstocks=true;
   //constructor
-  constructor(private route:ActivatedRoute,private productlistservice:ProductlistService,private dialog:MatDialog) {
+  constructor(private route:ActivatedRoute,private productlistservice:ProductlistService,private dialog:MatDialog,private cartservice:CartService, private toastr:ToastrService) {
     // console.log(this.subcategory);
    }
    openProductDialog(product:Product){
@@ -69,6 +66,7 @@ getproductvalue(){
     this.productlistservice.serachbyName(searchItem)
     .subscribe(data=>{
       dataitem=data;
+      if(dataitem!=null){
       if(dataitem['status']=="OK"){
       console.log(data);
       
@@ -79,7 +77,7 @@ getproductvalue(){
       this.products.forEach((element)=>{
         element.value=1;
       })
-      
+    }
     },
     error=>console.log("Products not found",error))
   }
@@ -90,6 +88,7 @@ getproductvalue(){
     this.productlistservice.searchbycategory(_searchbysubcat)
     .subscribe(data=>{
       dataitem=data;
+      if(dataitem!=null){
       if(dataitem['status']=="OK"){
         console.log(data);
         
@@ -99,7 +98,7 @@ getproductvalue(){
       this.products.forEach((element)=>{
         element.value=1;
       })
-      
+    }
     },
     error=>console.log("Products not found",error))
   }
@@ -109,6 +108,7 @@ searchall(){
   this.productlistservice.fetchallproducts()
       .subscribe(data=>{
         dataitem=data
+        if(dataitem!=null){
          if(dataitem['status']=="OK"){
         console.log(data);
         this.products=dataitem['content'];
@@ -117,8 +117,43 @@ searchall(){
       this.products.forEach((element)=>{
         element.value=1;
       })
-        
+        } 
       },
       error=>console.log("Products not found",error))
+}
+
+additemtocart(product:Product){
+  if(localStorage.getItem('userloggedIn')!="true"){
+    this.dialog.open(LoginComponent,{
+      width:"30%"
+     })
+     if(localStorage.getItem('userloggedIn')=="true"){
+       this.dialog.closeAll();
+     }
+     return;
+  }
+let cart=new Cart();
+cart.product=product;
+cart.user=JSON.parse(localStorage.getItem('user')!);
+cart.cost=product.cost;
+cart.quantity=product.value;
+this.cartservice.addToCart(cart).subscribe(
+  data=>{
+   this.toastr.success("Item added to cart","Cart",{
+    timeOut:800
+   })
+  },
+  error=>{
+    this.toastr.error("couldn't add try again!","Cart",{
+      timeOut:800
+    })
+  }
+)
+}
+
+checkemptyproduct(){
+if(this.products?.length>0)
+return false;
+return true;
 }
 }

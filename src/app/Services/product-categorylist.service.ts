@@ -7,7 +7,7 @@ import { productsubcategory } from '../model/productsubcategory';
 })
 export class ProductCategorylistService {
   electronicsubCat:productsubcategory[]=[
-    new productsubcategory("Phone"),
+    new productsubcategory("Mobiles"),
     new productsubcategory("Laptops"),
     new productsubcategory("TV")
   ];

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  FormBuilder, Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { CommonResponse } from '../model/CommonResponse';
+import { ToastrService } from 'ngx-toastr';
 import { User } from '../model/User';
 import { RegisteruserComponent } from '../registeruser/registeruser.component';
 import { UserLoginService } from '../Services/userlogin.service';
@@ -11,14 +11,13 @@ import { UserLoginService } from '../Services/userlogin.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private fb:FormBuilder, private userservice:UserLoginService, private dialog:MatDialog) { }
+  constructor(private fb:FormBuilder, private userservice:UserLoginService, private dialog:MatDialog, private toastr:ToastrService) { }
   loginForm=this.fb.group({
     email:['',[Validators.required,Validators.email]],
     password:['',Validators.required]
   })
   hide=true;
- 
-  static isloggedIn=false;
+  
   message="";
   userdetails:any;
 
@@ -33,13 +32,17 @@ export class LoginComponent implements OnInit {
         this.userdetails=data['content']!;
         console.log(this.userdetails.email);
           this.userdetails.isloggedIn=true;
+          localStorage.setItem('user',JSON.stringify(this.userdetails));
           localStorage.setItem('userId',this.userdetails.id);
           localStorage.setItem('userloggedIn',this.userdetails.isloggedIn);
           console.log(localStorage.getItem('userId'));
-        // LoginComponent.isloggedIn=true
         this.dialog.closeAll();
+        this.toastr.success("Logged in Successfully","Login",{timeOut:1000})
       },
-      error=>this.message="Invalid username or password")
+      error=>{
+        this.toastr.error("Invalid username or Password","Login",{timeOut:2000,
+      })
+      })
   }
   openregisterDialog(){
     this.dialog.open(RegisteruserComponent,{

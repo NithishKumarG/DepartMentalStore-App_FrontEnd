@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder,  Validators} from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { AppComponent } from '../app.component';
 import { LoginComponent } from '../login/login.component';
 import { User } from '../model/User';
@@ -12,7 +13,7 @@ import { UserLoginService } from '../Services/userlogin.service';
 })
 export class RegisteruserComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private userservice:UserLoginService,private dialog:MatDialog) { }
+  constructor(private fb:FormBuilder, private userservice:UserLoginService,private dialog:MatDialog,private toastr:ToastrService) { }
   registerForm=this.fb.group({
       firstname : [null,[Validators.required,Validators.minLength(3)]],
       lastname : [null,[Validators.required,Validators.minLength(1)]],
@@ -51,15 +52,21 @@ RegisterUser() {
       this.userdetails=data['content']!;
       console.log(this.userdetails.email);
         this.userdetails.isloggedIn=true;
+        localStorage.setItem('user',JSON.stringify(this.userdetails));
         localStorage.setItem('userId',this.userdetails.id);
         localStorage.setItem('userloggedIn',this.userdetails.isloggedIn);
         console.log(localStorage.getItem('userId'));
-      // LoginComponent.isloggedIn=true
-      this.dialog.closeAll();}
+      this.dialog.closeAll();
+      this.toastr.success("Register Succesfull","Register",{
+        timeOut:1000
+      })}
+      
       ,
     error=>{
       localStorage.setItem('userloggedIn',"false")
-          alert("registeration failed")}
+         this.toastr.error("Registeration failed Try again!","Register",{
+          timeOut:1000
+         })}
           )
 }
   ngOnInit(): void {

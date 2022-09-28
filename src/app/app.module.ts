@@ -28,6 +28,9 @@ import { CartDetailsComponent } from './cart-details/cart-details.component';
 import { ViewOrdersHistoryComponent } from './view-orders-history/view-orders-history.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
+import {ToastrModule} from 'ngx-toastr';
+import {MatRadioModule} from '@angular/material/radio';
+import { ProceedtopaymentComponent } from './proceedtopayment/proceedtopayment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,7 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
     CartDetailsComponent,
     ViewOrdersHistoryComponent,
     ViewproductComponent,
+    ProceedtopaymentComponent,
        
   ],
   imports: [
@@ -51,6 +55,7 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
     MatDividerModule,
     MatListModule,
     FormsModule,
+    MatRadioModule,
     MatDialogModule,
     MatFormFieldModule,
    MatInputModule,
@@ -61,7 +66,10 @@ import { ViewproductComponent } from './viewproduct/viewproduct.component';
    MatNativeDateModule,
    MatMenuModule,
    MatProgressBarModule,
-   MatGridListModule
+   MatGridListModule,
+   ToastrModule.forRoot({
+    preventDuplicates:true
+   })
   ],
   providers: [],
   bootstrap: [AppComponent]

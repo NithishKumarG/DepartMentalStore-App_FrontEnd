@@ -20,8 +20,21 @@ mat-grid-list{
     height: 10cm;
     position: relative;
 }
+.empty{
+display: block;
+margin-bottom: 1%;
+  margin-left: auto;
+  margin-top: 10%;
+  margin-right: auto;
+  width: 30%;
+  height:20%;
+}
+.empty-content{
+  margin-left: 40%;
 
-img{
+  
+}
+.img{
   max-height:6cm;
   max-width: 6cm;
   padding-left: 1cm;  
@@ -56,7 +69,7 @@ h4{
 
 button.pricebutton{
   width: 180px;
-  height: 1.6cm;
+  height: 1.8cm;
   color: black;
   background-color: greenyellow;
   border-radius: 1cm;

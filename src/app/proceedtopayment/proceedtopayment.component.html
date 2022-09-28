@@ -1,0 +1,19 @@
+<form #addressForm="ngForm" >
+    <h1>Shipping Address:</h1>
+    <mat-form-field class="example-full-width" appearance="fill" style="width: 100%;"> 
+        <input matInput type="text"  placeholder="Enter your address" #name="ngModel" [(ngModel)]="address" name="address" required minlength="15">
+        <mat-error *ngIf="name.hasError('required')&&name.touched">please enter your address</mat-error>
+        <mat-error *ngIf="name.hasError('minlength')&&name.dirty">Address should be of minimum 15 characters</mat-error>
+
+           
+      </mat-form-field>
+     <h1>Mode of Payment:</h1>
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1" color="primary"checked="true">Cash On Delivery</mat-radio-button>
+        </mat-radio-group>
+       
+        <button mat-raised-button color="primary" style="margin-left:5px;float: right;" (click)="placeorder();" [disabled]="addressForm.invalid">Place Order</button>   
+        <button mat-stroked-button mat-dialog-close="true" style="float: right;">Close</button>   <!-- <button mat-icon-button class="example-icon" style="background-color: blue;padding-top:0px; border-radius: 2px;" >(click)="searchItem();
+        <mat-icon style="color: rgb(255, 255, 255); padding-left: 2px; padding-top: 5px; margin:5px;font-size: 30px; display:flex;line-height: 12px;">search</mat-icon>
+      </button> -->
+    </form>

@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatMenuTrigger } from '@angular/material/menu';
 import { LoginComponent } from './login/login.component';
 
 @Component({
@@ -9,6 +8,11 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @HostListener("window:onbeforeunload",["$event"])
+  clearLocalStorage(event: any){
+      localStorage.clear();
+      this.isloggedIn="false";
+  }
 [x: string]: any;
   title = 'DepartMentalStore-App_FrontEnd';
   width="width:50px;";
@@ -21,7 +25,7 @@ export class AppComponent {
     this.dialog.open(LoginComponent,{
      width:"30%",
     })
-    if(this.isloggedIn=="false"||null){
+    if(localStorage.getItem('userloggedIn')=="true"){
       this.dialog.closeAll();
     }
   }

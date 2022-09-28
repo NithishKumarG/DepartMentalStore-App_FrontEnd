@@ -1,5 +1,5 @@
 mat-grid-tile {
-    background: lightblue;
+  background-image: linear-gradient(to left, lightblue , white);
     left: 2cm;
     border-radius: 1cm;
     border-width: 1cm;
@@ -26,10 +26,7 @@ img{
   padding-top: .1cm;
   float: left;
   margin-right: 8px;
-  
-
-
-
+ 
 }
 h4{
     text-align: center;
