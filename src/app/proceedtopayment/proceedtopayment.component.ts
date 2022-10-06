@@ -22,6 +22,7 @@ placeorder(){
   let _order=new Order();
 let cart:Cart= JSON.parse(localStorage.getItem('currentbuy')!);
  _order.id=cart.id;
+ _order.userId=Number(localStorage.getItem('userId'))
   _order.product=cart.product;
    _order.totalCost=cart.cost;
    _order.quantity=cart.quantity;

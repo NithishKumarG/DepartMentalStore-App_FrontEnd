@@ -64,8 +64,8 @@ RegisterUser() {
       ,
     error=>{
       localStorage.setItem('userloggedIn',"false")
-         this.toastr.error("Registeration failed Try again!","Register",{
-          timeOut:1000
+         this.toastr.error("user already exists! with given email-Id","Register",{
+          timeOut:2000
          })}
           )
 }
