@@ -27,7 +27,7 @@ let cart:Cart= JSON.parse(localStorage.getItem('currentbuy')!);
    _order.totalCost=cart.cost;
    _order.quantity=cart.quantity;
   _order.address=this.address;
-  _order.paymentmode="cash on deivery";
+  _order.paymentMode="cash on deivery";
   _order.orderDate=new Date();
   _order.deliveryDate=new Date();
   _order.deliveryDate.setDate(_order.orderDate.getDate()+3);

@@ -1,9 +1,9 @@
 
-<mat-grid-list cols="2:1" rowHeight="6:1" gutterSize="2cm">
-  <div *ngFor="let order of orderList">
+<mat-grid-list cols="2:1" rowHeight="4:1" gutterSize="2cm">
+  <div *ngFor="let order of orderList"> 
     <mat-grid-tile>
-      <div class="div1">
-      <img [src]="order.product.image">
+      <img [src]="order.product.image" [alt]="order.product.name">
+      <div class="div1" style="padding-bottom: 20px;">
       &nbsp;
       <h3 class="proname">{{order.product.name}}</h3>
       <h5>
@@ -11,7 +11,19 @@
       </h5>
       <p><i><b>Ordered On:</b></i> {{order.orderDate|date:'MMMM d, y'}}<br>
        <i> <b>Estimated to be Deliverd on: </b></i>{{order.deliveryDate|date:'MMMM d, y'}}</p>
+       <p>Quantity:{{order.quantity}}</p>
+       <div class="tracking" style="width: 650px;    margin-bottom: 8%;">
+       <div style="font-size: 1rem; background: none; float: left;" >Order Status:<mat-icon>room</mat-icon></div>
+      
+       <div class="track" style="width: 80%;  float: left;" >
+       <div class="step active" ><span><mat-icon>check</mat-icon><span class="text" style="margin-bottom: 10px;">Order confirmed </span></span> </div>
+       <div class="step" [class.active]="isshippingdone(order.deliveryDate)"><span><mat-icon>local_shipping</mat-icon><span class="text">Shipped</span></span></div>
+       <div class="step"[class.active]="isoutfordelivery(order.deliveryDate)" ><span><mat-icon>delivery_dining</mat-icon><span class="text">Out for delivery</span></span></div>
+       <div class="step" [class.active]="isDeliverd(order.deliveryDate)"><mat-icon>home</mat-icon><span class="text">Deliverd</span></div>
+    
       </div>
+      </div>
+    </div>
       <div class="price">
         <br>
         <button mat-raised-button class="pricebutton"><h1><small>Total:</small> &#8377;{{order.totalCost}}</h1>

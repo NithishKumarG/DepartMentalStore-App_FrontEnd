@@ -9,7 +9,7 @@ export class Order{
     userId:number;
     product:Product;
     address:string;
-    paymentmode:string;
+    paymentMode:string;
     deliveryDate:Date;
     orderDate:Date;
 }

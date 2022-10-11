@@ -48,7 +48,6 @@ h4{
 }
 p{
   padding-top: .1cm;
-  padding-left: 4cm;
   padding-right: 4cm;
   font-weight: 300px;
   font: optional;
@@ -63,9 +62,6 @@ button.pricebutton{
   font-size: larger;
   font-weight: 200px;
   margin-right: 1cm;
-
-
-
 }
 div.price{
   bottom:auto;
@@ -105,4 +101,62 @@ a{
   margin-bottom: 1cm;
   position: relative;
   display:inline-block
+}
+.track{
+
+  position: relative;
+  background-color: #ddd;
+  height: 7px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+  border-radius: 5%;
+  margin-bottom: 10px;
+}
+.track .step{
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  width: 20%;
+  margin-top: -18px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 10px;
+}
+.track .step.active:before
+{
+  background:#004bd6;
+}
+.track .step::before{
+  border-radius: 15%;
+  height: 7px;
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 0;
+  top: 18px;
+
+}
+.track .step.active mat-icon{
+  background:#004bd6;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.track mat-icon{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  position: relative;
+  border-radius: 100%;
+  background: #ddd;
+  margin-bottom: 10px;
+}
+.track .step.active .text{
+  font-weight: 400;
+  color: #000
+}
+.track .text{
+  display: block;
 }
